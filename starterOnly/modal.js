@@ -21,35 +21,52 @@ function launchModal() {
 }
 
 //creating variables with all field inputs
-const form = document.querySelector("#formId");
+// const form = document.querySelector("#formId");
 
 let userName = document.querySelector("#first");
 let userSurname = document.querySelector("#last");
 let userEmail = document.querySelector("#email");
 let userBirthDay = document.querySelector("#birthdate");
-let userLocation = document.getElementsByName("location"); //verify if this is correct to access to all locations
+let userQuantity = document.querySelector("#quantity");
+let userLocations = document.getElementsByName("location"); //verify if this is correct to access to all locations
 let btnSubmit = document.querySelector(".btn-submit");
-
 const regexEmail =
   /^[a-z0-9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/g;
-// creating submiting function validate()
+const nameRegex = /^[A-Za-zÀ-ÿ-]{2,}$/i;
+const birthdateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+const quantityRegex = /^(0|[1-9][0-9]*)$/;
+// creating validLocation ()
+function validLocation() {
+  let radioBtnChecked = false;
+  userLocations.forEach((location) => {
+    if (location.checked) {
+      radioBtnChecked = true;
+    }
+  });
+  return radioChecked;
+}
+//creating modal for sending message after form is validated
 
+// create error messages ,change html by adding <p>ERROR MESSAGES</p> under input field
+
+// creating submiting function validate()
 function valider() {
   let nom = userName.value;
   let prenom = userSurname.value;
   let date = userBirthDay.value;
   let email = userEmail.value;
-  // debugger;
+  let quantity = userQuantity.value;
   if (
     nom !== null &&
     prenom !== null &&
     date !== null &&
     email !== null &&
+    quantity !== null &&
     regexEmail.test(email)
   ) {
-    return alert("blabalaa");
+    return console.log("blabalaa");
   } else {
-    return alert("not working");
+    return console.log("not working");
   }
 }
 
