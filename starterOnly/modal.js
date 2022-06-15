@@ -32,9 +32,10 @@ let userLocations = document.getElementsByName("location"); //verify if this is 
 let btnSubmit = document.querySelector(".btn-submit");
 const regexEmail =
   /^[a-z0-9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/g;
-const nameRegex = /^[A-Za-zÀ-ÿ-]{2,}$/i;
-const birthdateRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
-const quantityRegex = /^(0|[1-9][0-9]*)$/;
+const regexName = /^[A-Za-zÀ-ÿ-]{2,}$/i;
+const regexBirthDay = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+const regexQuantity = /^(0|[1-9][0-9]*)$/;
+
 // creating validLocation ()
 function validLocation() {
   let radioBtnChecked = false;
@@ -43,7 +44,7 @@ function validLocation() {
       radioBtnChecked = true;
     }
   });
-  return radioChecked;
+  return radioBtnChecked;
 }
 //creating modal for sending message after form is validated
 
@@ -51,6 +52,7 @@ function validLocation() {
 
 // creating submiting function validate()
 function valider() {
+  debugger;
   let nom = userName.value;
   let prenom = userSurname.value;
   let date = userBirthDay.value;
@@ -62,7 +64,10 @@ function valider() {
     date !== null &&
     email !== null &&
     quantity !== null &&
-    regexEmail.test(email)
+    regexEmail.test(email) &&
+    regexName.test(nom, prenom) &&
+    regexBirthDay.test(date) &&
+    regexQuantity.test(quantity)
   ) {
     return console.log("blabalaa");
   } else {
