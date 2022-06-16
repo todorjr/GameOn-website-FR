@@ -128,16 +128,17 @@ formElement.addEventListener("submit", function (event) {
   // initialiser le compteur d'erreur à 0
   //create for every field test functions
 
-  if (!isValidName(first)) {
-    // createError sur le champ "#first"
-    // compter une nouvelle erreur
-  }
-  if (!isValidEmail(last)) {
-    alert("l'email n'est pas valide");
-  }
-  if (!isValidEmail(email)) {
-    alert("l'email n'est pas valide");
-  }
+  //! if conditionals will check if fields are 0 or 1 and depends on that will return message of succes or error message
+  // if (!isValidName(first)) {
+  //   // createError sur le champ "#first"
+  //   // compter une nouvelle erreur
+  // }
+  // if (!isValidEmail(last)) {
+  //   alert("l'email n'est pas valide");
+  // }
+  // if (!isValidEmail(email)) {
+  //   alert("l'email n'est pas valide");
+  // }
 
   // si le compteur est à 0 alors j'affiche le message de succès
   // sinon j'affiche le message d'erreur
