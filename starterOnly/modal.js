@@ -54,10 +54,8 @@ let formData = document.querySelectorAll(".formData");
  */
 function createError(message) {
   let p = document.createElement("p");
-
   p.classList.add("error");
   p.textContent = message;
-
   return p;
 }
 
@@ -70,8 +68,7 @@ console.log(formData);
 //creating confirmation message
 const textValidation = document.createElement("h3");
 textValidation.style.textAlign = "center";
-textValidation.innerHTML =
-  "Merci,<br> Votre réservation a bien été enregistrée";
+textValidation.innerHTML = "Merci,Votre réservation a bien été enregistrée";
 
 // Creating submiting function validate()
 function valider() {
@@ -109,12 +106,15 @@ formElement.addEventListener("submit", function (event) {
   const { first, last, email } = Object.fromEntries(formData);
 
   // initialiser le compteur d'erreur à 0
+  //create for every field test functions
 
   if (!isValidName(first)) {
     // createError sur le champ "#first"
     // compter une nouvelle erreur
   }
-
+  if (!isValidEmail(last)) {
+    alert("l'email n'est pas valide");
+  }
   if (!isValidEmail(email)) {
     alert("l'email n'est pas valide");
   }
