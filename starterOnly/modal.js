@@ -10,9 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-let userName = document.querySelector("#first");
-let userSurname = document.querySelector("#last");
-let userEmail = document.querySelector("#email");
+
 let userBirthDay = document.querySelector("#birthdate");
 let userQuantity = document.querySelector("#quantity");
 let userLocations = document.getElementsByName("location"); //verify if this is correct to access to all locations
@@ -28,9 +26,7 @@ function launchModal() {
 }
 
 // RegEx Declarations
-const regexEmail =
-  /^[a-z0-9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/g;
-const regexName = /^[A-Za-zÀ-ÿ-]{2,}$/i;
+
 const regexBirthDay = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
 const regexQuantity = /^(0|[1-9][0-9]*)$/;
 
@@ -44,8 +40,6 @@ function validLocation() {
   });
   return radioBtnChecked;
 }
-
-// create error messages
 let formData = document.querySelectorAll(".formData");
 
 /**
@@ -59,9 +53,6 @@ function createError(message) {
   return p;
 }
 
-// for (i = 0; i < formData.length; i++) {
-//   formData[i].appendChild(div);
-// }
 formData.forEach((data, i) => data.appendChild(createError("error" + i)));
 console.log(formData);
 
@@ -70,40 +61,69 @@ const textValidation = document.createElement("h3");
 textValidation.style.textAlign = "center";
 textValidation.innerHTML = "Merci,Votre réservation a bien été enregistrée";
 
+//*test validation functions
+function isValidName() {
+  const userName = document.querySelector("#first");
+  const userSurname = document.querySelector("#last");
+  const regexName = /^[A-Za-zÀ-ÿ-]{2,}$/i;
+  if (
+    userName !== null &&
+    userSurname !== null &&
+    regexName.test(userName.value, userSurname.value)
+  ) {
+    console.log("its working");
+  } else {
+    console.log("its not working");
+  }
+}
+function isValidEmail() {
+  const regexEmail =
+    /^[a-z0-9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/g;
+  const userEmail = document.querySelector("#email");
+  if (userEmail !== null && regexEmail.test(userEmail.value)) {
+    console.log("its working");
+  } else {
+    console.log("its not working");
+  }
+}
+function isValidBirthday() {}
+function isValidNumber() {}
+function isChecked() {}
+
 // Creating submiting function validate()
 function valider() {
+  // ! put here all functions with test validations
   // debugger;
-  let nom = userName.value;
-  let prenom = userSurname.value;
-  let date = userBirthDay.value;
-  let email = userEmail.value;
-  let quantity = userQuantity.value;
-
-  if (
-    nom !== null &&
-    prenom !== null &&
-    date !== null &&
-    email !== null &&
-    quantity !== null &&
-    regexEmail.test(email) &&
-    regexName.test(nom, prenom) &&
-    regexBirthDay.test(date) &&
-    regexQuantity.test(quantity)
-  ) {
-    return console.log("blabalaa");
-  } else {
-    return console.log("not working");
-  }
+  // let nom = userName.value;
+  // let prenom = userSurname.value;
+  // let date = userBirthDay.value;
+  // let email = userEmail.value;
+  // let quantity = userQuantity.value;
+  // if (
+  //   nom !== null &&
+  //   prenom !== null &&
+  //   date !== null &&
+  //   email !== null &&
+  //   quantity !== null &&
+  //   regexEmail.test(email) &&
+  //   regexName.test(nom, prenom) &&
+  //   regexBirthDay.test(date) &&
+  //   regexQuantity.test(quantity)
+  // ) {
+  //   return console.log("blabalaa");
+  // } else {
+  //   return console.log("not working");
+  // }
 }
 
 formElement.addEventListener("submit", function (event) {
   // prevent native form to send
   event.preventDefault();
-
   // get form data from #formId element
   const formData = new FormData(this);
   // get formData as an object with key=value
   const { first, last, email } = Object.fromEntries(formData);
+  console.log(Object.fromEntries(formData));
 
   // initialiser le compteur d'erreur à 0
   //create for every field test functions
