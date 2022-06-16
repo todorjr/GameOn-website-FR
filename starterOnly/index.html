@@ -51,9 +51,9 @@
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <!-- <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn">
           je m'inscris
-        </button> -->
+        </button>
       </div>
 <!-- hero image with btn to open form modal -->
       <div class="bground">
@@ -65,7 +65,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return valider();" 
             >
               <div
                 class="formData">
@@ -76,7 +75,9 @@
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                />
+                 
+                <br>
               </div>
               <div
                 class="formData">
@@ -86,7 +87,9 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
+                
+                 <br> 
               </div>
               <div
                 class="formData">
@@ -96,7 +99,9 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                />
+                
+                  <br>
               </div>
               <div
                 class="formData">
@@ -106,14 +111,19 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                />
+                 <br>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
+                 
+                <br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+              
+
               <div
                 class="formData">
                 <input
@@ -182,6 +192,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                
               </div>
 
               <div
@@ -190,6 +201,7 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
+                  name="cgu"
                   checked
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
@@ -197,19 +209,20 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input class="checkbox-input" type="checkbox" id="checkbox2" name="events" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
-              <input
+              <button
                 class="btn-submit"
                 type="submit"
                 class="button"  
-                value="C'est parti"
-              />
+              >
+              C'est parti
+              </button>
             </form>
           </div>
         </div>
