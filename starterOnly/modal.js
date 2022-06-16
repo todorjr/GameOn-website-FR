@@ -10,7 +10,6 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 let userName = document.querySelector("#first");
 let userSurname = document.querySelector("#last");
 let userEmail = document.querySelector("#email");
@@ -18,6 +17,7 @@ let userBirthDay = document.querySelector("#birthdate");
 let userQuantity = document.querySelector("#quantity");
 let userLocations = document.getElementsByName("location"); //verify if this is correct to access to all locations
 let btnSubmit = document.querySelector(".btn-submit");
+const formElement = document.querySelector("#formId");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -45,16 +45,43 @@ function validLocation() {
   return radioBtnChecked;
 }
 
-// create error messages ,change html by adding <p>ERROR MESSAGES</p> under input field
+// create error messages
+let formData = document.querySelectorAll(".formData");
+
+/**
+ * Generate a error element.
+ * @param {string} message Text to display
+ */
+function createError(message) {
+  let p = document.createElement("p");
+
+  p.classList.add("error");
+  p.textContent = message;
+
+  return p;
+}
+
+// for (i = 0; i < formData.length; i++) {
+//   formData[i].appendChild(div);
+// }
+formData.forEach((data, i) => data.appendChild(createError("error" + i)));
+console.log(formData);
+
+//creating confirmation message
+const textValidation = document.createElement("h3");
+textValidation.style.textAlign = "center";
+textValidation.innerHTML =
+  "Merci,<br> Votre réservation a bien été enregistrée";
 
 // Creating submiting function validate()
 function valider() {
-  debugger;
+  // debugger;
   let nom = userName.value;
   let prenom = userSurname.value;
   let date = userBirthDay.value;
   let email = userEmail.value;
   let quantity = userQuantity.value;
+
   if (
     nom !== null &&
     prenom !== null &&
@@ -72,4 +99,26 @@ function valider() {
   }
 }
 
-btnSubmit.addEventListener("click", valider());
+formElement.addEventListener("submit", function (event) {
+  // prevent native form to send
+  event.preventDefault();
+
+  // get form data from #formId element
+  const formData = new FormData(this);
+  // get formData as an object with key=value
+  const { first, last, email } = Object.fromEntries(formData);
+
+  // initialiser le compteur d'erreur à 0
+
+  if (!isValidName(first)) {
+    // createError sur le champ "#first"
+    // compter une nouvelle erreur
+  }
+
+  if (!isValidEmail(email)) {
+    alert("l'email n'est pas valide");
+  }
+
+  // si le compteur est à 0 alors j'affiche le message de succès
+  // sinon j'affiche le message d'erreur
+});
