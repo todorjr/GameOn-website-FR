@@ -32,11 +32,12 @@ let formData = document.querySelectorAll(".formData");
 function createError(id, message) {
   removeError(id);
   const elt = document.getElementById(id);
-  elt.style.border = "5px solid red";
+  elt.style.border = "2px solid red";
   let p = document.createElement("p");
   p.classList.add("error");
   p.textContent = message;
   p.style.color = "red";
+  p.style.fontSize = "11px";
   elt.parentElement.appendChild(p);
 }
 // function removeError will delete all errors after creation if field is properly inserted
@@ -51,10 +52,32 @@ console.log(formData);
 // function validationMessage will send validation message to the user
 function validationMessage() {
   formElement.style.display = "none";
+
+  // div element
+  const divValidation = document.createElement("div");
+  divValidation.style.height = "70vh";
+  divValidation.style.textAlign = "center";
+  divValidation.style.display = "flex";
+  divValidation.style.flexDirection = "column";
+  divValidation.style.justifyContent = "space-between";
+  divValidation.style.alignItems = "center";
+
+  // message
   const textValidation = document.createElement("h3");
-  textValidation.style.textAlign = "center";
-  textValidation.innerHTML = "Merci,Votre réservation a bien été enregistrée";
-  modal.appendChild(textValidation);
+  textValidation.innerHTML = "Merci pour <br> votre inscription";
+  divValidation.appendChild(textValidation);
+
+  //close button
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Fermer";
+  closeButton.classList.add("btn-close");
+  closeButton.addEventListener("click", () => {
+    modalbg.style.display = "none";
+  });
+  // appendChild
+  modal.appendChild(divValidation);
+  divValidation.appendChild(textValidation);
+  divValidation.appendChild(closeButton);
 }
 
 // validation functions for all fields
@@ -73,15 +96,6 @@ function isValidBirthday(value = "") {
   return value !== "" && regexBirthDay.test(value);
 }
 
-// function isValidLocation() {
-//   let radioBtnChecked = false;
-//   userLocations.forEach((location) => {
-//     if (location.checked) {
-//       radioBtnChecked = true;
-//     }
-//   });
-//   return radioBtnChecked;
-// }
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
 const validators = {
   first: {
