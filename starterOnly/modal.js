@@ -35,7 +35,11 @@ function createError(message) {
   p.style.fontFamily = "Impact,Charcoal,sans-serif";
   return p;
 }
-formData.forEach((data) => data.appendChild(createError("error")));
+
+let p = document.createElement("p");
+p.classList.add("error");
+p.textContent = "dffdsf";
+formData.forEach((data) => data.appendChild(createError("Error")));
 console.log(formData);
 
 //creating confirmation message
@@ -101,26 +105,6 @@ function isChecked() {}
 // Creating submiting function validate()
 function valider() {
   // debugger;
-  // let nom = userName.value;
-  // let prenom = userSurname.value;
-  // let date = userBirthDay.value;
-  // let email = userEmail.value;
-  // let quantity = userQuantity.value;
-  // if (
-  //   nom !== null &&
-  //   prenom !== null &&
-  //   date !== null &&
-  //   email !== null &&
-  //   quantity !== null &&
-  //   regexEmail.test(email) &&
-  //   regexName.test(nom, prenom) &&
-  //   regexBirthDay.test(date) &&
-  //   regexQuantity.test(quantity)
-  // ) {
-  //   return console.log("blabalaa");
-  // } else {
-  //   return console.log("not working");
-  // }
 }
 
 formElement.addEventListener("submit", function (event) {
@@ -138,15 +122,14 @@ formElement.addEventListener("submit", function (event) {
   //create for every field test functions
 
   //! if conditional will check if fields are 0 or 1 and depends on that will return message of succes or error message
-  if (isValidName(first, last)) {
+  if (!isValidName(first, last)) {
     // createError sur le champ "#first"
     // compter une nouvelle erreur
-    console.log("l'nom est  valide");
   } else {
     console.log("l'nom n'est pas  valide");
   }
 
-  if (isValidEmail(email)) {
+  if (!isValidEmail(email)) {
     console.log("l'email est  valide");
   } else {
     console.log("l'email n'est pas valide");
