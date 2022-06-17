@@ -12,14 +12,14 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const btnSubmit = document.querySelector(".btn-submit");
 const formElement = document.querySelector("#formId");
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+const modal = document.querySelector(".modal-body");
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 let formData = document.querySelectorAll(".formData");
 
@@ -50,9 +50,11 @@ console.log(formData);
 
 // function validationMessage will send validation message to the user
 function validationMessage() {
+  formElement.style.display = "none";
   const textValidation = document.createElement("h3");
   textValidation.style.textAlign = "center";
   textValidation.innerHTML = "Merci,Votre réservation a bien été enregistrée";
+  modal.appendChild(textValidation);
 }
 
 // validation functions for all fields
@@ -71,15 +73,15 @@ function isValidBirthday(value = "") {
   return value !== "" && regexBirthDay.test(value);
 }
 
-function isValidLocation() {
-  let radioBtnChecked = false;
-  userLocations.forEach((location) => {
-    if (location.checked) {
-      radioBtnChecked = true;
-    }
-  });
-  return radioBtnChecked;
-}
+// function isValidLocation() {
+//   let radioBtnChecked = false;
+//   userLocations.forEach((location) => {
+//     if (location.checked) {
+//       radioBtnChecked = true;
+//     }
+//   });
+//   return radioBtnChecked;
+// }
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
 const validators = {
   first: {
@@ -128,6 +130,7 @@ function formSubmit(event) {
 
   if (errors.length === 0) {
     // submit validation
+    validationMessage();
   }
 
   // si le compteur est à 0 alors j'affiche le message de succès
