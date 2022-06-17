@@ -129,7 +129,9 @@ main {
   border-radius: 1rem;
   cursor: pointer;
 }
-
+.modal-btn::first-letter {
+  text-transform: uppercase;
+}
 .modal-btn:hover {
   background: #3876ac;
 }
@@ -191,6 +193,17 @@ main {
   margin: 15px auto;
 }
 
+.btn-close {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  width: 110px;
+  height: 35px;
+  margin: auto;
+  background: #fe142f;
+}
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -451,7 +464,6 @@ input[data-error]::after {
 }
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
