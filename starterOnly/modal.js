@@ -44,6 +44,7 @@ function createError(id, message) {
 function removeError(id) {
   const ele = document.getElementById(id);
   const errors = Array.from(ele.parentElement.getElementsByClassName("error"));
+  console.log(ele);
   console.log("errors", errors);
   errors.forEach((err) => ele.parentElement.removeChild(err));
 }
@@ -95,6 +96,10 @@ function isValidBirthday(value = "") {
   const regexBirthDay = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
   return value !== "" && regexBirthDay.test(value);
 }
+function isValidQuantity(value = "") {
+  const regexNumber = /^[0-9]$/;
+  return value !== "" && regexNumber.test(value);
+}
 
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
 const validators = {
@@ -110,6 +115,10 @@ const validators = {
   birthdate: {
     validationFunction: isValidBirthday,
     message: "La date de naissance n'est pas valide",
+  },
+  quantity: {
+    validationFunction: isValidQuantity,
+    message: "La quantité n'est pas valide",
   },
 };
 
@@ -146,9 +155,6 @@ function formSubmit(event) {
     // submit validation
     validationMessage();
   }
-
-  // si le compteur est à 0 alors j'affiche le message de succès
-  // sinon j'affiche le message d'erreur
 }
 
 formElement.addEventListener("submit", formSubmit);
