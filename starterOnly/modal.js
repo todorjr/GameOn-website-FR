@@ -72,9 +72,15 @@ function validationMessage() {
   });
 
   // x modal button
-
   x.addEventListener("click", () => {
     modalbg.style.display = "none";
+  });
+
+  // keyPress function
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      modalbg.style.display = "none";
+    }
   });
 
   // appendChild
