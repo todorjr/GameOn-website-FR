@@ -102,6 +102,7 @@ function isValidQuantity(value = "") {
 }
 
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
+
 const validators = {
   first: {
     validationFunction: isValidName,
@@ -110,15 +111,15 @@ const validators = {
   last: { validationFunction: isValidName, message: "Le nom n'est pas valide" },
   email: {
     validationFunction: isValidEmail,
-    message: "L'email' n'est pas valide",
+    message: "L'email n'est pas valide !",
   },
   birthdate: {
     validationFunction: isValidBirthday,
-    message: "La date de naissance n'est pas valide",
+    message: "La date de naissance n'est pas valide !",
   },
   quantity: {
     validationFunction: isValidQuantity,
-    message: "La quantité n'est pas valide",
+    message: "La quantité n'est pas valide !",
   },
 };
 
@@ -128,6 +129,7 @@ function formSubmit(event) {
 
   // get form data
   const formData = Object.fromEntries(new FormData(this));
+  console.log(formData);
   const formDataEntries = Object.entries(formData);
   const errors = [];
   const valid = [];
