@@ -68,7 +68,21 @@ img {
 .topnav .icon {
   display: none;
 }
-
+/* Styling modal confirmation */
+.confirmation {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.confirmation h3 {
+  height: 70%;
+}
+.confirmation .btn-close {
+  margin-bottom: 0;
+}
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;

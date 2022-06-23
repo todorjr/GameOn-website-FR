@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const btnSubmit = document.querySelector(".btn-submit");
 const formElement = document.querySelector("#formId");
 const modal = document.querySelector(".modal-body");
+const x = document.querySelector(".close");
 
 // launch modal form
 function launchModal() {
@@ -56,17 +57,11 @@ function validationMessage() {
 
   // div element
   const divValidation = document.createElement("div");
-  divValidation.style.height = "70vh";
-  divValidation.style.textAlign = "center";
-  divValidation.style.display = "flex";
-  divValidation.style.flexDirection = "column";
-  divValidation.style.justifyContent = "space-between";
-  divValidation.style.alignItems = "center";
+  divValidation.classList.add("confirmation");
 
   // message
   const textValidation = document.createElement("h3");
   textValidation.innerHTML = "Merci pour <br> votre inscription";
-  divValidation.appendChild(textValidation);
 
   //close button
   const closeButton = document.createElement("button");
@@ -75,6 +70,13 @@ function validationMessage() {
   closeButton.addEventListener("click", () => {
     modalbg.style.display = "none";
   });
+
+  // x modal button
+
+  x.addEventListener("click", () => {
+    modalbg.style.display = "none";
+  });
+
   // appendChild
   modal.appendChild(divValidation);
   divValidation.appendChild(textValidation);
