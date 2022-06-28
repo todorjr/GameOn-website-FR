@@ -59,6 +59,11 @@ function validationMessage() {
   const divValidation = document.createElement("div");
   divValidation.classList.add("confirmation");
 
+  // new div element
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("confirmation-div");
+  divValidation.appendChild(newDiv);
+
   // message
   const textValidation = document.createElement("h3");
   textValidation.innerHTML = "Merci pour <br> votre inscription";
