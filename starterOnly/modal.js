@@ -22,30 +22,8 @@ function launchModal() {
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-let formData = document.querySelectorAll(".formData");
-console.log(formData);
-
-// function createError will create error if field is not properly inserted or is empty
-function createError(id, message) {
-  removeError(id);
-  const elt = document.getElementById(id);
-  elt.style.border = "2px solid red";
-  let p = document.createElement("p");
-  p.classList.add("error");
-  p.textContent = message;
-  p.style.color = "red";
-  p.style.fontSize = "11px";
-  elt.parentElement.appendChild(p);
-}
-// function removeError will delete all errors after creation if field is properly inserted
-function removeError(id) {
-  const ele = document.getElementById(id);
-  const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
-  console.log(ele);
-  console.log("errors", errors);
-  errors.forEach((err) => ele.parentElement.removeChild(err));
-  ele.style.border = "none";
-}
+let formDataList = document.querySelectorAll(".formData");
+console.log(formDataList);
 
 // function validationMessage will send validation message to the user
 function validationMessage() {
@@ -72,11 +50,11 @@ function validationMessage() {
     modalbg.style.display = "none";
   });
 
+  //* Closing modal
   // x modal button
   x.addEventListener("click", () => {
     modalbg.style.display = "none";
   });
-
   // keyPress function
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
@@ -111,18 +89,22 @@ function isValidQuantity(value = "") {
 }
 
 function isValidLocation() {
-  const locations = document.querySelectorAll("input[name=location]");
-  locations.forEach((location) => {
-    if (location.checked) {
-      return true;
-    } else {
-      return false;
+  let isLocationChecked = false;
+  const locations = document.reserve.location;
+  for (let i = 0; i < locations.length; i++) {
+    if (locations[i].checked) {
+      isLocationChecked = true;
+      break;
     }
-  });
+  }
+  if (isLocationChecked) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
-
 const validators = {
   first: {
     validationFunction: isValidName,
@@ -147,17 +129,36 @@ const validators = {
   },
 };
 
-function formSubmit(event) {
-  // prevent native form to send
-  event.preventDefault();
+// function createError will create error if field is not properly inserted or is empty
+function createError(id, message) {
+  removeError(id);
+  const elt = document.getElementById(id);
+  elt.style.border = "2px solid red";
+  let p = document.createElement("p");
+  p.classList.add("error");
+  p.textContent = message;
+  p.style.color = "red";
+  p.style.fontSize = "11px";
+  elt.parentElement.appendChild(p);
+}
 
+// function removeError will delete all errors after creation if field is properly inserted
+function removeError(id) {
+  const ele = document.getElementById(id);
+  const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
+  errors.forEach((err) => ele.parentElement.removeChild(err));
+  ele.style.border = "none";
+}
+
+function formSubmit(event) {
+  event.preventDefault();
   // get form data
   const formData = Object.fromEntries(new FormData(this));
-  console.log(formData);
+  console.log(formData); //Form Data didnt get all input fields
   const formDataEntries = Object.entries(formData);
+  console.log(formDataEntries);
   const errors = [];
   const valid = [];
-
   for (const entry of formDataEntries) {
     const keyName = entry[0];
     const value = entry[1];
@@ -171,10 +172,6 @@ function formSubmit(event) {
       }
     }
   }
-
-  console.log(errors);
-  console.log(valid);
-
   errors.forEach(({ id, message }) => createError(id, message));
   valid.forEach((id) => removeError(id));
 
