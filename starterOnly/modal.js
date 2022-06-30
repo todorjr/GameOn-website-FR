@@ -23,11 +23,7 @@ function launchModal() {
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 let formData = document.querySelectorAll(".formData");
-
-/**
- * Generate a error element.
- * @param {string} message Text to display
- */
+console.log(formData);
 
 // function createError will create error if field is not properly inserted or is empty
 function createError(id, message) {
@@ -44,12 +40,12 @@ function createError(id, message) {
 // function removeError will delete all errors after creation if field is properly inserted
 function removeError(id) {
   const ele = document.getElementById(id);
-  const errors = Array.from(ele.parentElement.getElementsByClassName("error"));
+  const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
   console.log(ele);
   console.log("errors", errors);
   errors.forEach((err) => ele.parentElement.removeChild(err));
+  ele.style.border = "none";
 }
-console.log(formData);
 
 // function validationMessage will send validation message to the user
 function validationMessage() {
@@ -114,6 +110,17 @@ function isValidQuantity(value = "") {
   return value !== "" && regexNumber.test(value);
 }
 
+function isValidLocation() {
+  const locations = document.querySelectorAll("input[name=location]");
+  locations.forEach((location) => {
+    if (location.checked) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
+
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
 
 const validators = {
@@ -133,6 +140,10 @@ const validators = {
   quantity: {
     validationFunction: isValidQuantity,
     message: "La quantité n'est pas valide !",
+  },
+  location: {
+    validationFunction: isValidLocation,
+    message: "Vous devez choisir une option.",
   },
 };
 
@@ -162,6 +173,7 @@ function formSubmit(event) {
   }
 
   console.log(errors);
+  console.log(valid);
 
   errors.forEach(({ id, message }) => createError(id, message));
   valid.forEach((id) => removeError(id));
