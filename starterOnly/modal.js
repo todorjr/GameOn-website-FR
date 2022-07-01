@@ -48,17 +48,21 @@ function validationMessage() {
   closeButton.classList.add("btn-close");
   closeButton.addEventListener("click", () => {
     modalbg.style.display = "none";
+    window.location.reload();
+    q;
   });
 
   //* Closing modal
   // x modal button
   x.addEventListener("click", () => {
     modalbg.style.display = "none";
+    window.location.reload();
   });
   // keyPress function
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       modalbg.style.display = "none";
+      window.location.reload();
     }
   });
 
@@ -91,6 +95,7 @@ function isValidQuantity(value = "") {
 function isValidLocation() {
   let isLocationChecked = false;
   const locations = document.reserve.location;
+  console.log("location", locations);
   for (let i = 0; i < locations.length; i++) {
     if (locations[i].checked) {
       isLocationChecked = true;
@@ -153,12 +158,28 @@ function removeError(id) {
 function formSubmit(event) {
   event.preventDefault();
   // get form data
-  const formData = Object.fromEntries(new FormData(this));
+  const pouet = new FormData(this);
+  console.log(pouet);
+  const formData = Object.fromEntries(pouet);
+  console.log(this); //Form Data didnt get all input fields
   console.log(formData); //Form Data didnt get all input fields
   const formDataEntries = Object.entries(formData);
   console.log(formDataEntries);
   const errors = [];
   const valid = [];
+
+  // Verify if in formDataEntries key with name location existe
+  if (!formDataEntries.location) {
+    const validationFn = validators.location.validationFunction;
+    if (validationFn()) {
+      valid.push("location");
+    } else {
+      const errorMessage = validators.location.message;
+      errors.push({ id: "location", message: errorMessage });
+    }
+  }
+
+  // Looping through all entries in formDataEntries
   for (const entry of formDataEntries) {
     const keyName = entry[0];
     const value = entry[1];
