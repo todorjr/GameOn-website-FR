@@ -19,6 +19,16 @@ const x = document.querySelector(".close");
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+function closeLaunchModal() {
+  modalbg.style.display = "none";
+}
+
+//closing form modal
+x.addEventListener("click", () => {
+  closeLaunchModal();
+})
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -48,8 +58,7 @@ function validationMessage() {
   closeButton.classList.add("btn-close");
   closeButton.addEventListener("click", () => {
     modalbg.style.display = "none";
-    window.location.reload();
-    q;
+    // window.location.reload(); //! Do not reload the form ,only place again in the modal window
   });
 
   //* Closing modal
@@ -58,12 +67,11 @@ function validationMessage() {
     modalbg.style.display = "none";
     window.location.reload();
   });
+
   // keyPress function
-  document.addEventListener("keydown", (event) => {
+  window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      modalbg.style.display = "none";
-      window.location.reload();
-    }
+closeLaunchModal();  }
   });
 
   // appendChild
@@ -102,12 +110,9 @@ function isValidLocation() {
       break;
     }
   }
-  if (isLocationChecked) {
-    return true;
-  } else {
-    return false;
+    return isLocationChecked;
   }
-}
+
 
 // validators is object where we will stored our key and values from formData (user input) (key is name of fields from form and value is user input)
 const validators = {
