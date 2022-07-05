@@ -57,8 +57,10 @@ function validationMessage() {
   closeButton.textContent = "Fermer";
   closeButton.classList.add("btn-close");
   closeButton.addEventListener("click", () => {
-    modalbg.style.display = "none";
-    // window.location.reload(); //! Do not reload the form ,only place again in the modal window
+    formElement.style.display = "block";
+    formElement.reset();
+    divValidation.style.display = "none";
+    //! Do not reload the form ,only place again in the modal window
   });
 
   //* Closing modal
@@ -157,7 +159,7 @@ function removeError(id) {
   const ele = document.getElementById(id);
   const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
   errors.forEach((err) => ele.parentElement.removeChild(err));
-  ele.addEventListener("change",()=> {  ele.style.borderColor = "green";
+  ele.addEventListener("change",()=> {  ele.style.border = "none";
   ele.parentElement.querySelector(".error").remove();
 }); 
 }
