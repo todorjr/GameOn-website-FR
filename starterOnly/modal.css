@@ -112,8 +112,19 @@ img {
     font-size: 22px;
   }
   .hero-headline {
-    font-size: 3.2rem;
+    font-size: 2.2rem;
   }
+  .modal-body{
+    height: 100%;
+  }
+  .header-logo{
+    padding-left: 30px;
+  }
+ 
+  .hero-text{
+    font-size: 13px;
+  }
+ 
 }
 
 .confirmation-div {
