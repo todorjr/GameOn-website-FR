@@ -78,6 +78,8 @@ function validationMessage() {
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
         closeLaunchModal(); 
+        divValidation.style.display = "none";
+        modalbg.style.display = "none";
         }
   });
 
