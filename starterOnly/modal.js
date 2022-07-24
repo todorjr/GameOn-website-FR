@@ -63,6 +63,7 @@ function validationMessage() {
     formElement.style.display = "block";
     formElement.reset();
     divValidation.style.display = "none";
+    modalbg.style.display = "none";
     //! Do not reload the form ,only place again in the modal window
   });
 
@@ -76,7 +77,8 @@ function validationMessage() {
   // keyPress function
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-closeLaunchModal();  }
+        closeLaunchModal(); 
+        }
   });
 
   // appendChild
