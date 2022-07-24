@@ -109,8 +109,8 @@ function isValidLocation() {
   let isLocationChecked = false;
   const locations = document.reserve.location;
   console.log("location", locations);
-  for (let i = 0; i < locations.length; i++) {
-    if (locations[i].checked) {
+  for (const location of locations) {
+    if (location.checked) {
       isLocationChecked = true;
       break;
     }
@@ -160,7 +160,9 @@ function createError(id, message) {
 // function removeError will delete all errors after creation if field is properly inserted
 function removeError(id) {
   const ele = document.getElementById(id);
+  console.log(ele);
   const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
+  console.log(errors);
   errors.forEach((err) => ele.parentElement.removeChild(err));
   ele.addEventListener("change",()=> {  ele.style.border = "none";
   ele.parentElement.querySelector(".error").remove();
@@ -211,6 +213,7 @@ function formSubmit(event) {
   if (errors.length === 0) {
     // submit validation
     validationMessage();
+    console.log('THANK YOU FOR YOU RESERVATION');
   }
 }
 
