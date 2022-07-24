@@ -79,7 +79,6 @@ function validationMessage() {
     if (event.key === "Escape") {
         closeLaunchModal(); 
         divValidation.style.display = "none";
-        modalbg.style.display = "none";
         }
   });
 
@@ -111,8 +110,7 @@ function isValidQuantity(value = "") {
 
 function isValidLocation() {
   let isLocationChecked = false;
-  const locations = document.reserve.location;
-  console.log("location", locations);
+  const locations = document.getElementById("formId").location;
   for (const location of locations) {
     if (location.checked) {
       isLocationChecked = true;
