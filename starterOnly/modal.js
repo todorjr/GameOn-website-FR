@@ -166,7 +166,7 @@ function removeError(id) {
   const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
   console.log(errors);
   errors.forEach((err) => ele.parentElement.removeChild(err));
-  ele.addEventListener("change",()=> {  ele.style.border = "none";
+  ele.addEventListener("change",()=> {  ele.style.borderColor = "green";
   ele.parentElement.querySelector(".error").remove();
 }); 
 }
