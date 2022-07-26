@@ -15,16 +15,15 @@ const formElement = document.querySelector("#formId");
 const modal = document.querySelector(".modal-body");
 const x = document.querySelector(".close");
 const body=document.querySelector("body");
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  modalbg.style.height = "100%";
-  body.style.overflowY="hidden";
+  body.style.overflow="hidden";
 }
 
 function closeLaunchModal() {
   modalbg.style.display = "none";
+  body.style.overflow="auto";
 }
 
 //closing form modal
