@@ -519,7 +519,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and  (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -536,12 +536,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    /* font-size: 4.5rem; */
+    font-size: 4rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    /* font-size: 1.5rem; */
+    font-size: 1.5rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -556,11 +556,19 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
-  
 }
-@media screen and (min-width: 800px) and (max-width: 1100px) {
+@media screen and (min-width:768px){
+  .main-navbar a{
+    font-size: 5vh;
+    margin:10px
+  }
+  .header-logo{
+   margin-left:10px;
+  }
+}
+@media screen and (min-width: 801px) and (max-width: 1100px) {
 .hero-headline{
-  font-size: 4.5rem;
+  font-size: 4rem;
 }
 
 }
