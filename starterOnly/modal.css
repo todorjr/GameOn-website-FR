@@ -107,12 +107,13 @@ img {
   }
 }
 
-@media screen and (max-width: 468px) {
+@media screen and (max-width: 540px) {
   .hero-text {
     font-size: 22px;
   }
   .hero-headline {
-    font-size: 3rem;
+    font-size: 1rem;
+    line-height: 1
   }
   .modal-body{
     height: 100%;
@@ -122,10 +123,12 @@ img {
   }
  
   .hero-text{
-    font-size: 18px;
+    font-size: 20px;
+    margin-left: 10px;
   }
  
 }
+
 
 .confirmation-div {
   height: 50%;
@@ -553,6 +556,7 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  
 }
 @media screen and (min-width: 800px) and (max-width: 1100px) {
 .hero-headline{
