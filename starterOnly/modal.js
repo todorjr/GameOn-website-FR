@@ -13,7 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const btnSubmit = document.querySelector(".btn-submit");
 const formElement = document.querySelector("#formId");
 const modal = document.querySelector(".modal-body");
-const x = document.querySelector(".close");
+const closeButtonX = document.querySelector(".close");
 const body=document.querySelector("body");
 // launch modal form
 function launchModal() {
@@ -27,15 +27,11 @@ function closeLaunchModal() {
 }
 
 //closing form modal
-x.addEventListener("click", () => {
-  closeLaunchModal();
-})
+closeButtonX.addEventListener("click", closeLaunchModal)
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-let formDataList = document.querySelectorAll(".formData");
-console.log(formDataList);
 
 // function validationMessage will send validation message to the user
 function validationMessage() {
@@ -68,7 +64,7 @@ function validationMessage() {
 
   //* Closing modal
   // x modal button
-  x.addEventListener("click", () => {
+  closeButtonX.addEventListener("click", () => {
     modalbg.style.display = "none";
     window.location.reload();
   });
@@ -87,27 +83,33 @@ function validationMessage() {
   divValidation.appendChild(closeButton);
 }
 
-// validation functions for all fields
+// function isValidName will validate the name fields
 function isValidName(value = "") {
   const regexName = /^[A-Za-zÀ-ÿ-]{2,}$/i;
   return value !== "" && regexName.test(value);
 }
+
+
+// function isValidEmail will validate the email input
 function isValidEmail(value = "") {
   const regexEmail =
     /^[a-z0-9!#$ %& '*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&' * +/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/g;
   return value !== "" && regexEmail.test(value);
 }
-// Creating isValidBirthday function
+// function isValidBirthday will validate the birthday input
 function isValidBirthday(value = "") {
   const regexBirthDay = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
   return value !== "" && regexBirthDay.test(value);
 }
+
+// function isValidQuantity will validate the entered number
 function isValidQuantity(value = "") {
   const regexNumber = /^[0-9]$/;
   return value !== "" && regexNumber.test(value);
 }
 
-function isValidLocation() {
+//function isValidLocation will verify if one location is checked
+function isValidLocation() { 
   let isLocationChecked = false;
   const locations = document.getElementById("formId").location;
   for (const location of locations) {
@@ -165,25 +167,26 @@ function removeError(id) {
   const errors = Array.from(ele.parentElement.querySelectorAll(".error"));
   console.log(errors);
   errors.forEach((err) => ele.parentElement.removeChild(err));
-  ele.addEventListener("change",()=> {  ele.style.borderColor = "green";
-  ele.parentElement.querySelector(".error").remove();
-}); 
+  ele.addEventListener("change",()=> {
+    ele.style.borderColor = "green";
+    ele.parentElement.querySelector(".error").remove();
+  }, { once: true }); 
 }
 
+// function formSubmit 
 function formSubmit(event) {
+
+  // prevent default behavior of browser
   event.preventDefault();
+
   // get form data
-  const pouet = new FormData(this);
-  console.log(pouet);
-  const formData = Object.fromEntries(pouet);
-  console.log(this); //Form Data didnt get all input fields
-  console.log(formData); //Form Data didnt get all input fields
+  const newFormData = new FormData(this);
+  const formData = Object.fromEntries(newFormData);
   const formDataEntries = Object.entries(formData);
-  console.log(formDataEntries);
   const errors = [];
   const valid = [];
 
-  // Verify if in formDataEntries key with name location existe
+  // verify if in formDataEntries key with name location existe
   if (!formDataEntries.location) {
     const validationFn = validators.location.validationFunction;
     if (validationFn()) {
@@ -194,8 +197,8 @@ function formSubmit(event) {
     }
   }
 
-  // Looping through all entries in formDataEntries
-  for (const entry of formDataEntries) {
+  // looping through all entries in formDataEntries
+  formDataEntries.forEach((entry) => { 
     const keyName = entry[0];
     const value = entry[1];
     if (validators[keyName]) {
@@ -207,8 +210,12 @@ function formSubmit(event) {
         errors.push({ id: keyName, message: errorMessage });
       }
     }
-  }
+  });
+
+   // for every element in errors array, createError function will be called and will create error message
   errors.forEach(({ id, message }) => createError(id, message));
+
+   // for every element in valid array, removeError function will be called and will remove error message
   valid.forEach((id) => removeError(id));
 
   if (errors.length === 0) {
