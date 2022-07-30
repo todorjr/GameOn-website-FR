@@ -21,7 +21,6 @@ const body=document.querySelector("body");
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  body.style.overflow="hidden";
 }
 
 function closeLaunchModal() {
@@ -80,8 +79,6 @@ function createError(id, message) {
   let p = document.createElement("p");
   p.classList.add("error");
   p.textContent = message;
-  p.style.color = "red";
-  p.style.fontSize = "11px";
   elt.parentElement.appendChild(p);
 }
 
