@@ -83,6 +83,16 @@ img {
 .confirmation .btn-close {
   margin-bottom: 0;
 }
+
+/* Styling element add in JS */
+
+.error{
+  color:red;
+  font-size:11px;
+}
+
+/* Styling element add in JS */
+
 /* Modal */
 @media screen and (max-width: 768px) {
   .topnav a {
@@ -128,8 +138,6 @@ img {
   }
  
 }
-
-
 .confirmation-div {
   height: 50%;
 }
