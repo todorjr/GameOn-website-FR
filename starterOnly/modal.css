@@ -79,6 +79,7 @@ img {
 }
 .confirmation h3 {
   height: 70%;
+  animation: validation 1.5s;
 }
 .confirmation .btn-close {
   margin-bottom: 0;
@@ -93,66 +94,7 @@ img {
 
 /* Styling element add in JS */
 
-/* Modal */
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
 
-@media screen and (max-width: 540px) {
-  .hero-text {
-    font-size: 22px;
-  }
-  .hero-headline {
-    font-size: 1rem;
-    line-height: 1
-  }
-  
-  .header-logo{
-    padding-left: 30px;
-  }
- 
-  .hero-text{
-    font-size: 20px;
-    margin-left: 10px;
-  }
-  .content {
-    margin: 86px auto 0 auto;
-  }
-  .topnav{
-    display:flex;
-    flex-direction: row;
-    justify-content:space-between;
-    position:fixed;
-    top: 0;
-    z-index:11;
-    background-color:#fff;
-    padding:10px;
-    margin:0;
-    width:100%;
-   }
-   .modal-body{
-    margin-top: 3rem;
-   }
-}
 .confirmation-div {
   height: 50%;
 }
@@ -291,12 +233,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -541,6 +478,72 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+/* Modal */
+@media screen and (max-width: 768px) {
+    .topnav a {
+      display: none;
+    }
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+    .topnav.responsive {
+      position: relative;
+    }
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+  
+  @media screen and (max-width: 540px) {
+    .hero-text {
+      font-size: 22px;
+    }
+    .hero-headline {
+      font-size: 1rem;
+      line-height: 1
+    }
+    
+    .header-logo{
+      padding-left: 30px;
+    }
+
+   .header-logo img{
+    width:130px;
+    height:auto;
+    margin-top: 20px;
+   }
+    .hero-text{
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    .content {
+      margin: 86px auto 0 auto;
+    }
+    .topnav{
+      display:flex;
+      flex-direction: row;
+      justify-content:space-between;
+      position:fixed;
+      top: 0;
+      z-index:11;
+      background-color:#fff;
+      padding:20px;
+      margin:0;
+      width:100%;
+     }
+     .topnav a.icon{
+        color:red;
+     }
+    
+  }
 @media screen and  (max-width: 800px) {
   .hero-section {
     display: block;
@@ -597,3 +600,12 @@ footer {
     opacity: 1;
   }
 }
+
+@keyframes validation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
