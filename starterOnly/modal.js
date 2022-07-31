@@ -162,7 +162,7 @@ function validationMessage() {
 
   // message
   const textValidation = document.createElement("h3");
-  textValidation.innerHTML = "Merci pour <br> votre inscription";
+  textValidation.innerHTML = "Merci pour <br> votre inscription ! 🤩";
 
   //close button
   const closeButton = document.createElement("button");
