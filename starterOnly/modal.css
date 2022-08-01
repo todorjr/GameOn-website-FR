@@ -79,8 +79,11 @@ img {
 }
 .confirmation h3 {
   height: 70%;
-  animation: validation 1.5s;
+  animation: validation .8s cubic-bezier(.215,.61,.355,1.000) both;
+  
 }
+
+
 .confirmation .btn-close {
   margin-bottom: 0;
 }
@@ -601,11 +604,7 @@ footer {
   }
 }
 
-@keyframes validation {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+@keyframes validation 
+{
+  0%{letter-spacing:-.5em;transform:translateZ(-700px);opacity:0}40%{opacity:.6}100%{transform:translateZ(0);opacity:1}
+}
