@@ -447,7 +447,7 @@ input {
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 20px;
   padding: 0;
 }
 .btn-signup {
@@ -528,7 +528,7 @@ footer {
    }
     .hero-text{
       font-size: 20px;
-      margin-left: 10px;
+      /* margin-left: 10px; */
     }
     .content {
       margin: 86px auto 0 auto;
@@ -578,13 +578,14 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4rem;
+    font-size: 2rem;
     white-space: normal;
-    margin-top:7rem;
+    margin-top:4rem;
+    line-height:1.5;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .hero-img img {
     border-radius: 10px;
