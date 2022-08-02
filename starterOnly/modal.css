@@ -412,15 +412,14 @@ input {
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  flex-direction: row;
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
 .hero-content {
   padding: 50px 30px;
-  grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
@@ -458,7 +457,8 @@ input {
   margin-top: 59px;
 }
 .hero-img {
-  grid-column: span 8;
+object-fit: cover;
+width: 100%;
 }
 .hero-img img {
   width: 100%;
